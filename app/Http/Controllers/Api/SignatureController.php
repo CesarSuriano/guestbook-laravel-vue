@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Signature;
+use App\Http\Resources\SignatureResource;
 
 class SignatureController extends Controller {
 
@@ -25,8 +26,8 @@ class SignatureController extends Controller {
         return new SignatureResource($signature);
     }
 
-    public function flag() {
-        return $this->update(['flagged_at' => \Carbon\Carbon::now()]);
+    public function show(Signature $signature) {
+        return new SignatureResource($signature);
     }
 
 }
